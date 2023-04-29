@@ -51,14 +51,14 @@ const login = catchAsync(async (req, res, next) => {
     }
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
-    // res.cookie('jwt', token, {
-    //   expires: new Date(
-    //     Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    //   ),
-    //   httpOnly: true,
-    //   // secure: process.env.NODE_ENV === 'production',
-    //   secure: false,
-    // });
+    res.cookie('jwt', token, {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      // secure: false,
+    });
     // console.log(process.env.NODE_ENV);
 
     res.status(200).json({
@@ -70,7 +70,7 @@ const login = catchAsync(async (req, res, next) => {
 
 const isLoggedIn = catchAsync(async (req, res, next) => {
   let token;
-  console.log(req.cookies);
+  console.log('req.cookies', req.cookies);
 
   if (req.cookies.jwt) {
     token = req.cookies.jwt;
