@@ -70,6 +70,7 @@ const login = catchAsync(async (req, res, next) => {
 
 const isLoggedIn = catchAsync(async (req, res, next) => {
   let token;
+  console.log(req.cookies);
 
   if (req.cookies.jwt) {
     token = req.cookies.jwt;
@@ -81,7 +82,7 @@ const isLoggedIn = catchAsync(async (req, res, next) => {
     token = req.headers.authorization.split(' ')[1];
   }
   if (!token) {
-    return next(new AppError('Access Denied ⁣⁣🔴'), 401);
+    return next(new AppError('Access Denied ⁣⁣🔴 from isLoggedin'), 401);
   }
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
