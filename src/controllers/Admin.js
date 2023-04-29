@@ -59,7 +59,7 @@ const login = catchAsync(async (req, res, next) => {
       secure: process.env.NODE_ENV === 'production',
       // secure: false,
     });
-    // console.log(process.env.NODE_ENV);
+    console.log(process.env.NODE_ENV);
 
     res.status(200).json({
       status: 'success',
