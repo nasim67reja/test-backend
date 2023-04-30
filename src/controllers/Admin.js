@@ -56,9 +56,10 @@ const login = catchAsync(async (req, res, next) => {
         Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
       ),
       httpOnly: true,
-      // secure: process.env.NODE_ENV === 'production',
-      secure: true,
+      // secure: true,
     });
+
+    // secure: process.env.NODE_ENV === 'production',
     console.log(process.env.NODE_ENV);
 
     res.status(200).json({
