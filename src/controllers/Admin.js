@@ -57,6 +57,7 @@ const login = catchAsync(async (req, res, next) => {
       ),
       httpOnly: true,
       secure: true,
+      sameSite: 'none',
     });
 
     // secure: process.env.NODE_ENV === 'production',
