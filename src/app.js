@@ -40,7 +40,7 @@ app.use(
       'https://adminswopnew.netlify.app',
       'https://swopme.co',
       'https://swop-dashboard.vercel.app',
-      'ttps://test-frontend-eta-two.vercel.app',
+      'https://test-frontend-eta-two.vercel.app',
     ],
     credentials: true,
   })
