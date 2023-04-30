@@ -56,11 +56,10 @@ const login = catchAsync(async (req, res, next) => {
         Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
       ),
       httpOnly: true,
-      // secure: true,
+      secure: true,
     });
 
     // secure: process.env.NODE_ENV === 'production',
-    console.log(process.env.NODE_ENV);
 
     res.status(200).json({
       status: 'success',
@@ -72,6 +71,7 @@ const login = catchAsync(async (req, res, next) => {
 const isLoggedIn = catchAsync(async (req, res, next) => {
   let token;
   console.log('req.cookies', req.cookies);
+  console.log('req.headers.authorization ', req.headers.authorization);
 
   if (req.cookies.jwt) {
     token = req.cookies.jwt;
